@@ -4,6 +4,7 @@ jdk:
 
 
 install: ant
+install: ant deps
 
 script:
   - ant test -lib lib

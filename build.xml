@@ -88,8 +88,10 @@
    <target name="test" depends="build">
       <!-- Usa Junit5-->
       <junitlauncher printSummary='true' haltOnFailure='true' >
-        <classpath location="classpath" />
-        <classpath refid="classpath"/>
+        <classpath>
+         <pathelement location="classpath" />
+         <path refid="classpath"/>
+        </classpath>
 
         <testclasses outputdir="${reports.dir}" >
           <fileset dir="${testsclasses.dir}">
