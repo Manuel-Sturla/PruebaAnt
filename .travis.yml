@@ -2,11 +2,9 @@ language: java
 jdk:
   - openjdk8
 
-before_install:
-  - sudo apt-get install ant-optional 
 script:
-  - sudo mv ./lib/ant-junitlauncher-jar-1.10.5.jar ANT_HOME/lib
-  - ant -lib "./lib" test 
+  
+  - ant test 
 
 
 notifications:
