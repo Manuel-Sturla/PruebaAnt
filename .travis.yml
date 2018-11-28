@@ -6,7 +6,7 @@ before_install:
   - sudo apt-get install ant-optional 
 script:
   
-  - ant test 
+  - ant -lib lib/ 
 
 
 notifications:
