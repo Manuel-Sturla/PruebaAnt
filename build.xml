@@ -20,6 +20,12 @@
         <include name="*.zip"/>
       </fileset>
       <pathelement location="${classes.dir}" /> 
+      <pathelement location="${build.dir}" />
+      <pathelement location="${sources.dir}" />
+      <pathelement location="${lib.dir}" />
+      <pathelement location="${tests.dir}" /> 
+       
+      <pathelement location="${testsclasses.dir}" />
     </path>  
    
   <!-- IVY STUFF -->
