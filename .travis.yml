@@ -3,11 +3,11 @@ jdk:
   - openjdk8
 
 
-install: ant test -lib "./lib"
+
 
 
 script:
-  - ant test
+  - ant test -lib "./lib"
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
