@@ -19,14 +19,12 @@
         <include name="*.jar" />
         <include name="*.zip"/>
       </fileset>
-      <pathelement location="${classes.dir}" /> 
-      <pathelement location="${build.dir}" />
       <pathelement location="${sources.dir}" />
-      <pathelement location="${lib.dir}" />
       <pathelement location="${tests.dir}" /> 
-       
+      <pathelement location="${classes.dir}" /> 
       <pathelement location="${testsclasses.dir}" />
     </path>  
+       
    
   <!-- IVY STUFF -->
     <!-- Ivy version and output directories -->
@@ -37,7 +35,7 @@
     <!-- Ivy installation -->
     <target name="check-installation" unless="ivy.jar.exists">
     	<available property="ivy.jar.exists" file="${ivy.jar}"/>
-	</target>
+	  </target>
 
     <target name="download-ivy" depends="check-installation" unless="ivy.jar.exists">
       <mkdir dir="${ivy.dir}" />
@@ -56,7 +54,7 @@
 
 	<!-- Resolve Ivy dependencies -->
     <target name="resolve-dependencies"  depends="install-ivy"  description="--> retrieve dependencies with ivy">
-      <ivy:retrieve conf="build"  pattern="${lib.dir}/[artifact]-[revision].[ext]" />
+      <ivy:retrieve conf="build"  pattern="${lib.dir}/[artifact]-[type]-[revision].[ext]" />
       <ivy:retrieve conf="analysis" pattern="${lib.dir}/analysis/[artifact](-[classifier]).[ext]"/>
     </target>
 
@@ -85,20 +83,25 @@
     </target>
 
   <!-- Testing with Junit! -->
-   <target name="test" depends="build">
-      <!-- Usa Junit5-->
-      <junitlauncher printSummary='true' haltOnFailure='true' >
-        <classpath>
-         <pathelement location="classpath" />
-         <path refid="classpath"/>
-        </classpath>
+  <path id="test.classpath">
+    <pathelement location="${build.dir}" />
+    <pathelement location="${reports.dir}" />
+    
 
-        <testclasses outputdir="${reports.dir}" >
+    
+  </path>
+   <target name="test" depends='build' >
+      <!-- Usa Junit5-->
+      <junitlauncher printSummary='true' haltOnFailure='false' >
+        <classpath refid='classpath' />  
+        <classpath refid='test.classpath'/>
+        
+        <testclasses outputdir="${reports.dir}">
           <fileset dir="${testsclasses.dir}">
-              <include name="**/*Test.class"/>    
           </fileset>
-          <listener type="legacy-brief" sendSysOut="true" sendSysErr="true" />
         </testclasses>
+          <listener type="legacy-brief" sendSysOut="true" sendSysErr="true" />
+        
       </junitlauncher>  
     </target>  
 </project>

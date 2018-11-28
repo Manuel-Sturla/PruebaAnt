@@ -8,8 +8,12 @@
     
 
     <dependencies>
-	    <dependency org="org.junit.jupiter" name="junit-jupiter-api" rev="5.3.1" conf="build->default"/>
-	    <dependency org='org.junit.jupiter' name='junit-jupiter-engine' rev='5.3.1' conf='build->default'/>
+    	<!-- Descarga el task para Junit5 de ant y todas las dependencias necesarias
+    		(incluye Junit4 y Junit5) -->
+    	<!-- https://mvnrepository.com/artifact/org.apache.ant/ant-junitlauncher -->
+		<dependency org="org.apache.ant" name="ant-junitlauncher" rev="1.10.5"/>
+
+	   
 
     </dependencies>
 
