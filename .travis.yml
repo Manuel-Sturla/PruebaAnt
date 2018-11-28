@@ -3,7 +3,7 @@ jdk:
   - openjdk8
 
 script:
-  - ant test -lib "./lib"
+  - ant -lib "./lib" test 
 
 
 notifications:
