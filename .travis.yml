@@ -6,7 +6,7 @@ jdk:
 install: ant
 
 script:
-  - ant test
+  - ant test -lib lib
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
