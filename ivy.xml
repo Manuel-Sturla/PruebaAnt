@@ -1,0 +1,16 @@
+<ivy-module version="2.0">
+    <info organisation="org.apache" module="pruebaAnt"/>
+
+     <configurations>
+        <conf name="analysis"  description="analysis jars"/>
+        <conf name="build" description="binary jars"/>
+    </configurations>
+    
+
+    <dependencies>
+	    <dependency org="org.junit.jupiter" name="junit-jupiter-api" rev="5.3.1" conf="build->default"/>
+	    <dependency org='org.junit.jupiter' name='junit-jupiter-engine' rev='5.3.1' conf='build->default'/>
+
+    </dependencies>
+
+</ivy-module>    
